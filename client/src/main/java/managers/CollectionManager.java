@@ -5,11 +5,12 @@ import managers.commands.Update_id;
 import models.*;
 import request.CommandRequest;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class CollectionManager implements Collectionable<Dragon> {
+public class CollectionManager implements Collectionable<Dragon>, Serializable {
     private static final LocalDateTime localdatetime;
     public static CommandRequest request;
     static {
@@ -42,35 +43,26 @@ public class CollectionManager implements Collectionable<Dragon> {
         if (dragons.size() == 0) {
             return ("Коллекция пуста");
         }
-        String result = "";
-        for (Dragon dragon : dragons) {
-            result = ("Дракон " + dragon.getId() + " {\n") +
-            (dragon.toString()) + "\n" +
-            ("}");
-        }
-        return result;
+        return dragons.stream()
+            .sorted((d1, d2) -> d1.getName().compareTo(d2.getName()))
+            .map(dragon -> "Дракон " + dragon.getId() + " {\n" + dragon.toString() + "\n}")
+            .collect(java.util.stream.Collectors.joining("\n"));
     }
 
     @Override
     public String clear() {
         dragons.clear();
         return "Коллекция очищена успешно!\n";
-
     }
     public String exit(){
         System.exit(0);
         return "Выход из программы";
     }
     public String max_by_weight() {
-        Dragon max_weight_dragon = collection.getCollection().getFirst();
-        Long max_weight = collection.getCollection().getFirst().getWeight();
-        for (Dragon dragon : collection.getData().getCollection()) {
-            if (dragon.getWeight() > max_weight) {
-                max_weight_dragon = dragon;
-                max_weight = dragon.getWeight();
-            }
-        }
-        return "Максимальный по весу дракон: " + (max_weight_dragon.toString());
+        return dragons.stream()
+            .max((d1, d2) -> Long.compare(d1.getWeight(), d2.getWeight()))
+            .map(dragon -> "Максимальный по весу дракон: " + dragon.toString())
+            .orElse("Коллекция пуста");
     }
 
     public String head() {
@@ -84,37 +76,31 @@ public class CollectionManager implements Collectionable<Dragon> {
     }
 
     public String group_by() {
-        String finalresult = "";
-        for (DragonType cnt : DragonType.values()) {
-            Integer value = 0;
-            String result = "";
-            for (Dragon dragon : collection.getCollection()) {
-                if (dragon.getType() == cnt) {
-                    result += (dragon.toString()) + "\n";
-                    value++;
-                }
-            }
-            finalresult += "Вывод драконов типа " + cnt.toString() + " {\n" + result + "}\nДраконов типа " + cnt.toString() + ": " + value + "\n";
-        }
-        return finalresult;
+        return java.util.Arrays.stream(DragonType.values())
+            .map(type -> {
+                long count = dragons.stream()
+                    .filter(dragon -> dragon.getType() == type)
+                    .count();
+                String dragons_of_type = dragons.stream()
+                    .filter(dragon -> dragon.getType() == type)
+                    .map(Dragon::toString)
+                    .collect(java.util.stream.Collectors.joining("\n"));
+                return String.format("Вывод драконов типа %s {\n%s\n}\nДраконов типа %s: %d\n",
+                    type, dragons_of_type, type, count);
+            })
+            .collect(java.util.stream.Collectors.joining());
     }
 
     public String filter(String data) {
-        boolean found = false;
         try {
-            String result = "";
             Integer value = Integer.parseInt(data);
-            for (Dragon dragon : collection.getCollection()) {
-                if (dragon.getCharacter() != null && dragon.getCharacter().ordinal() < value) {
-                    result += (dragon.toString()) + "\n";
-                    found = true;
-                }
-            }
-            if (!found) {
-                return("Дракона с меньшим значением характера не найдено");
-            }
-            return result;
-        } catch (NumberFormatException e) {return ("Параметр команды должен быть числом");
+            String result = dragons.stream()
+                .filter(dragon -> dragon.getCharacter() != null && dragon.getCharacter().ordinal() < value)
+                .map(Dragon::toString)
+                .collect(java.util.stream.Collectors.joining("\n"));
+            return result.isEmpty() ? "Дракона с меньшим значением характера не найдено" : result;
+        } catch (NumberFormatException e) {
+            return "Параметр команды должен быть числом";
         }
     }
 
@@ -149,13 +135,13 @@ public class CollectionManager implements Collectionable<Dragon> {
 
     @Override
     public Dragon search(int id) {
-        for (Dragon dragon : dragons) {
-            if (id == dragon.getId()) {
-                return dragon;
-            }
-        }
-        System.out.println("Объекта с таким id не найдено в коллекции");
-        return null;
+        return dragons.stream()
+            .filter(dragon -> dragon.getId() == id)
+            .findFirst()
+            .orElseGet(() -> {
+                System.out.println("Объекта с таким id не найдено в коллекции");
+                return null;
+            });
     }
 
     @Override

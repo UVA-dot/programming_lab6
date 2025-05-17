@@ -1,6 +1,10 @@
 package models;
 
-public class DragonHead {
+import java.io.Serializable;
+
+public class DragonHead implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private Float size; //Поле может быть null
     public DragonHead(){
 

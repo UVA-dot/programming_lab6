@@ -1,6 +1,8 @@
 package models;
 
-public enum DragonType {
+import java.io.Serializable;
+
+public enum DragonType implements Serializable {
     WATER,
     AIR,
     FIRE;

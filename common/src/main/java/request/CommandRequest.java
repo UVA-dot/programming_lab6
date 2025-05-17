@@ -2,7 +2,11 @@ package request;
 
 import models.Dragon;
 
-public class CommandRequest extends Request {
+import java.io.Serializable;
+
+public class CommandRequest extends Request implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     public long id;
     public String line;
     public Dragon dragon;

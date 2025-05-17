@@ -1,6 +1,8 @@
 package models;
 
-public enum DragonCharacter {
+import java.io.Serializable;
+
+public enum DragonCharacter implements Serializable {
     CUNNING,
     WISE,
     EVIL,
