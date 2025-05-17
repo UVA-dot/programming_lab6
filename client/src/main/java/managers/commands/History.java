@@ -8,7 +8,7 @@ public class History extends Command{
         super("History", "Выводит последние 10 команд(без аргументов)");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return commandManager.printHistory();
     }
 }

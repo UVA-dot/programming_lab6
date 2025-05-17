@@ -8,7 +8,7 @@ public class Filter_less_than_character extends Command{
         super("Filter_less_than_character", "вывести элементы, значение поля character которых меньше заданного");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.filter(arg);
     }
 }

@@ -8,7 +8,7 @@ public class Exit extends Command {
     public Exit(){
         super("Exit", "Выйти из приложения без сохранения коллекции в файл");
     }
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.exit();
     }
 }

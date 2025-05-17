@@ -12,7 +12,7 @@ public class Add extends Command {
         flagscanner = true;
     }
     @Override
-    public String execute(String arg, Dragon dragon){
-        return collectionManager.add(dragon);
+    public String execute(String arg){
+        return collectionManager.add();
     }
 }

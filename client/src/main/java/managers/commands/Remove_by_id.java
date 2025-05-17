@@ -8,7 +8,7 @@ public class Remove_by_id extends Command {
         super("Remove_by_id", "Удаляет элемент по заданному id");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.remove_by_id(arg);
     }
 }

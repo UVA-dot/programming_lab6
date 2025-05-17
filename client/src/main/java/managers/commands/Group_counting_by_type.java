@@ -9,7 +9,7 @@ public class Group_counting_by_type extends Command{
         super("Group_counting_by_type", "сгруппировать элементы коллекции по значению поля type, вывести количество элементов в каждой группе");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.group_by();
     }
 }

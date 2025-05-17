@@ -8,7 +8,7 @@ public class Remove_head extends Command {
         super("Remove_head", "Вывести первый элемент коллекции и удалить его");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.remove_head();
     }
 }

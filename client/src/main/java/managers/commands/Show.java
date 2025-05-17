@@ -8,7 +8,7 @@ public class Show extends Command {
         super("Show","Вывести все элементы коллекции в строковом представлении");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.print();
     }
 }

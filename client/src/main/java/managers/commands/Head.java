@@ -8,7 +8,7 @@ public class Head extends Command {
         super("Head","Выводит первый элемент коллекции");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.head();
     }
 }

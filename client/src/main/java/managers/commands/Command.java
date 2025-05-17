@@ -37,7 +37,7 @@ public abstract class Command {
     public String execute() throws ArrayIndexOutOfBoundsException{
         throw new ArrayIndexOutOfBoundsException();
     }
-    public String execute(String arg, Dragon dragon) throws ArrayIndexOutOfBoundsException{
+    public String execute(String arg) throws ArrayIndexOutOfBoundsException{
         throw new ArrayIndexOutOfBoundsException();
     }
 }

@@ -9,7 +9,7 @@ public class Clear extends Command {
 
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.clear();
     }
 }

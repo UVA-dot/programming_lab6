@@ -13,7 +13,7 @@ public class Update_id extends Command {
     }
 
     @Override
-    public String execute(String arg, Dragon dragon) throws ArrayIndexOutOfBoundsException {
-        return collectionManager.update_id(dragon);
+    public String execute(String arg) throws ArrayIndexOutOfBoundsException {
+        return collectionManager.update_id(arg);
     }
 }

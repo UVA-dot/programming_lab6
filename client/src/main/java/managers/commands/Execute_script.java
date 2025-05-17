@@ -8,7 +8,7 @@ public class Execute_script extends Command{
 
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg ){
         return null;
     }
 }

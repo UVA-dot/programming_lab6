@@ -8,7 +8,7 @@ public class Info extends Command {
         super("Info","Вывести информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)");
     }
     @Override
-    public String execute(String arg, Dragon dragon){
+    public String execute(String arg){
         return collectionManager.printInfo();
     }
 }

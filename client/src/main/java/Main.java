@@ -80,7 +80,7 @@ public class Main {
                     System.out.println("Сервер закрыл соединение.");
                     channel.close();
                     Exit  exit1 =new Exit();
-                    exit1.execution("exit");
+                    exit1.execute("exit");
                     return false;
                 }
                 remaining -= bytesRead;
