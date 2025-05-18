@@ -11,7 +11,7 @@ public class ConsoleManager implements Console {
     private Scanner scanner;
     private CommandManager commandManager;
     private Validator validator;
-    public Integer id = 10^5;
+    public Integer id = 1;
     public static Integer work = 0;
     private CollectionManager collectionManager = CollectionManager.getData();
     public ConsoleManager(Scanner scanner, CommandManager commandManager, Validator validator){

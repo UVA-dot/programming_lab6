@@ -18,7 +18,6 @@ public class Main {
             Reader fileReader = new Reader(FilePath);
             result = fileReader.readCollection();
             collectionManager.setCollection(result);
-            System.out.println("Пожалуйста введите команду");
             Scanner scanner = new Scanner(System.in);
             CommandManager commandManager = CommandManager.getCommandManager();
             Validator validator = new Validator();

@@ -25,7 +25,7 @@ public class CommandManager implements Commandable<Command> {
         commands.put("REMOVE_HEAD", new Remove_head());
         commands.put("HISTORY", new History());
         commands.put("MAX_BY_WEIGHT", new Max_by_weight());
-        commands.put("GROUP_COUNTING_BY_TYPE", new Group_counting_by_type());
+        commands.put("GROUP_BY", new Group_counting_by_type());
         commands.put("EXECUTE_SCRIPT", new Execute_script());
         commands.put("FILTER", new Filter_less_than_character());
         commands.put("UPDATE_ID", new Update_id());

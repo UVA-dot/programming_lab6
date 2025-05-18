@@ -178,7 +178,7 @@ public class CollectionManager implements Collectionable<Dragon> {
         Dragon olddragon = new Dragon();
         int m = 0;
         for(Dragon dragon1: collection.getCollection()){
-            if(dragon1.getId() == dragon.getId()){
+            if(dragon1.getId().equals(dragon.getId())){
                 olddragon = dragon1;
                 m = -1;
             }
