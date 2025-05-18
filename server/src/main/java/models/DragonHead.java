@@ -1,6 +1,8 @@
 package models;
 
-public class DragonHead {
+import java.io.Serializable;
+
+public class DragonHead implements Serializable {
     private Float size; //Поле может быть null
     public DragonHead(){
 

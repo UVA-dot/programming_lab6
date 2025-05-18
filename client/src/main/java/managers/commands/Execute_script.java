@@ -8,7 +8,8 @@ public class Execute_script extends Command{
 
     }
     @Override
-    public String execute(String arg ){
+    public String execute(String arg){
+        collectionManager.execute_script(arg);
         return null;
     }
 }

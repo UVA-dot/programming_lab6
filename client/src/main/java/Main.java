@@ -17,7 +17,7 @@ public class Main {
         try {
 
             SocketChannel channel = SocketChannel.open();
-            channel.connect(new InetSocketAddress("localhost", 6042));
+            channel.connect(new InetSocketAddress("localhost", 5050));
             channel.configureBlocking(false);
             Controller controller = new Controller();
             System.out.println("Успешное подключение к серверу");

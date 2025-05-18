@@ -43,7 +43,7 @@ public class CollectionManager implements Collectionable<Dragon> {
         }
         String result = "";
         for (Dragon dragon : dragons) {
-            result = ("Дракон " + dragon.getId() + " {\n") +
+            result += ("Дракон " + dragon.getId() + " {\n") +
             (dragon.toString()) + "\n" +
             ("}");
         }
@@ -127,10 +127,9 @@ public class CollectionManager implements Collectionable<Dragon> {
         if (collection.getData() != null) {
             Dragon dragon = collection.getCollection().getFirst();
             collection.remove(dragon);
-            System.out.println("Успешно удалён");
             return ("1-ый элемент коллекции {") +
             (collection.getCollection().getFirst().toString()) +
-            "}";
+            "} Успешно удалён";
         } else {
             return ("Коллекция пуста, показывать и удалять нечего");
         }

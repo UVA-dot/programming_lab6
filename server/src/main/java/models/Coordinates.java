@@ -1,6 +1,8 @@
 package models;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     private long x; //Максимальное значение поля: 353
     private Integer y; //Поле не может быть null
     public Coordinates(){}
